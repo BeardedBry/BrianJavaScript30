@@ -5,12 +5,12 @@ const drumKeys = [
     {
         name: 'a',
         sound: 'clap',
-        key: 65
+        key: "KeyA"
     },
     {
         name: 's',
         sound: 'hihat',
-        key: 83
+        key: "KeyS"
     },
     {
         name: 'd',
@@ -44,7 +44,9 @@ const drumKeys = [
     },
     {
         name: 'l',
-        sound: 'tink',
+        sound: function(){
+            console.log(this.key);
+        },
         key: 76
     },
 ]
@@ -55,12 +57,25 @@ function init(){
     drumKeys.forEach((drumKey) => {
         let li = document.createElement('li');
         li.innerText = drumKey.name;
+        li.classList.add(drumKey.name);
         ul.appendChild(li);
     })
-    console.log(list);
 
+    window.onkeydown = log;
 
-    
+    function log(e){
+        drumKeys.filter((drumKey) => {
+            if(e.key == drumKey.name){
+                drumKey.sound();
+            }
+        })
+    }
 }
 
-init();
+init(); 
+
+// window.addEventListener('keydown', (e) => {
+//         console.log(e.code);
+// })
+
+
