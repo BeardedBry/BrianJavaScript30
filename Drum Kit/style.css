@@ -1,0 +1,32 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+    padding: 2rem;
+    margin: 5px;
+    border: 1px solid white;
+}
+
+#drum {
+    padding-top: 300px;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+body {
+    background-image: url(images/david-martin-1186875-unsplash.jpg) ;/* Photo by David Martin on Unsplash */
+    background-size: 240%;
+    background-position: top center;
+    color: white;
+}
+
+h1 {
+    margin-top: 45px;
+    text-align: center;
+}

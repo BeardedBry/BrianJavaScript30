@@ -1,6 +1,5 @@
 const drum = document.getElementById('drum');
 const ul = document.createElement('ul');
-const li = document.createElement('li');
 
 const drumKeys = [
     {
@@ -49,3 +48,22 @@ const drumKeys = [
         key: 76
     },
 ]
+
+function init(){
+
+    const list = [];
+    
+    drumKeys.forEach((drumKey) => {
+        let li = document.createElement('li');
+        li.innerText = drumKey.name;
+        list.push(li);
+    })
+    console.log(list);
+
+    list.forEach((listItem) =>{
+        ul.appendChild(listItem);
+    })
+    drum.appendChild(ul);
+}
+
+init();
