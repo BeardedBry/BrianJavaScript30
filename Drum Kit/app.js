@@ -4,52 +4,47 @@ const ul = document.createElement('ul');
 const drumKeys = [
     {
         name: 'a',
-        sound: 'clap',
-        key: "KeyA"
+        sound: hit,
     },
     {
         name: 's',
-        sound: 'hihat',
-        key: "KeyS"
+        sound: hit,
     },
     {
         name: 'd',
-        sound: 'kick',
-        key: 68
+        sound: hit,
     },
     {
         name: 'f',
-        sound: 'openhat',
-        key: 70
+        sound: hit,
     },
     {
         name: 'g',
-        sound: 'boom',
-        key: 71
+        sound: hit,
     },
     {
         name: 'h',
-        sound: 'ride',
-        key: 72
+        sound: hit,
     },
     {
         name: 'j',
-        sound: 'snare',
-        key: 74
+        sound: hit,
     },
     {
         name: 'k',
-        sound: 'tom',
-        key: 75
+        sound: hit,
     },
     {
         name: 'l',
-        sound: function(){
-            console.log(this.key);
-        },
-        key: 76
+        sound: hit,
     },
 ]
+
+function hit(){
+    console.log(this.name);
+    let h = document.querySelector(`.${this.name}`);
+    h.style="color: yellow";
+}
 
 function init(){
 
