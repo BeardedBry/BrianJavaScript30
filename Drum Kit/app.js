@@ -51,19 +51,16 @@ const drumKeys = [
 
 function init(){
 
-    const list = [];
-    
+    drum.appendChild(ul);
     drumKeys.forEach((drumKey) => {
         let li = document.createElement('li');
         li.innerText = drumKey.name;
-        list.push(li);
+        ul.appendChild(li);
     })
     console.log(list);
 
-    list.forEach((listItem) =>{
-        ul.appendChild(listItem);
-    })
-    drum.appendChild(ul);
+
+    
 }
 
 init();
