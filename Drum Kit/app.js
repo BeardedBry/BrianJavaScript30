@@ -43,7 +43,11 @@ const drumKeys = [
 function hit(){
     console.log(this.name);
     let h = document.querySelector(`.${this.name}`);
-    h.style="color: yellow";
+    h.classList.add('blink');
+    setTimeout(()=>{
+        h.classList.remove('blink');
+    },100)
+
 }
 
 function init(){
