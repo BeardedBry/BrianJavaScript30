@@ -3,51 +3,34 @@ const ul = document.createElement('ul');
 
 const drumKeys = [
     {
-        name: 'a',
+        name: ['a','kick'],
         sound: hit,
         file: 'sounds/NW_Kick 1.wav',
     },
     {
-        name: 's',
+        name: ['s','hi-hat'],
         sound: hit,
         file: 'sounds/NW_Hat 4.wav',
     },
     {
-        name: 'd',
+        name: ['d','open hat'],
         sound: hit,
         file: 'sounds/NW_Hat Open.wav',
     },
     {
-        name: 'f',
+        name: ['f','cymbal'],
         sound: hit,
         file: 'sounds/NW_Cymbal 1.wav',
     },
     {
-        name: 'g',
+        name: ['g','snare'],
         sound: hit,
         file: 'sounds/NW_Snare 6.wav',
-    },
-    {
-        name: 'h',
-        sound: hit,
-    },
-    {
-        name: 'j',
-        sound: hit,
-    },
-    {
-        name: 'k',
-        sound: hit,
-    },
-    {
-        name: 'l',
-        sound: hit,
     },
 ]
 
 function hit(){
-    console.log(this.name);
-    let h = document.querySelector(`.${this.name}`);
+    let h = document.querySelector(`.${this.name[0]}`);
 
     // Animation
     h.classList.add('blink');
@@ -64,8 +47,8 @@ function init(){
     drum.appendChild(ul);
     drumKeys.forEach((drumKey) => {
         let li = document.createElement('li');
-        li.innerText = drumKey.name;
-        li.classList.add(drumKey.name);
+        li.innerText = drumKey.name[0] + "\n" + drumKey.name[1];
+        li.classList.add(drumKey.name[0]);
         ul.appendChild(li);
     })
 
@@ -74,7 +57,7 @@ function init(){
 
     function log(e){
         drumKeys.filter((drumKey) => {
-            if(e.key == drumKey.name){
+            if(e.key == drumKey.name[0]){
                 drumKey.sound();
             }
         })
