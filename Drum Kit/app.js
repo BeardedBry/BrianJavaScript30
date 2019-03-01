@@ -1,28 +1,31 @@
 const drum = document.getElementById('drum');
 const ul = document.createElement('ul');
 
-
 const drumKeys = [
     {
         name: 'a',
         sound: hit,
-        source: 'kick',
+        file: 'sounds/NW_Kick 1.wav',
     },
     {
         name: 's',
         sound: hit,
+        file: 'sounds/NW_Hat 4.wav',
     },
     {
         name: 'd',
         sound: hit,
+        file: 'sounds/NW_Hat Open.wav',
     },
     {
         name: 'f',
         sound: hit,
+        file: 'sounds/NW_Cymbal 1.wav',
     },
     {
         name: 'g',
         sound: hit,
+        file: 'sounds/NW_Snare 6.wav',
     },
     {
         name: 'h',
@@ -52,12 +55,8 @@ function hit(){
         h.classList.remove('blink');
     },100)
 
-    const audioKick = new Audio('sounds/NW_Kick 1.wav')
-    const audioCtx = new window.AudioContext();
-    const kick = audioCtx.createMediaElementSource(audioKick);
-    kick.connect(audioCtx.destination);
-    kick.play();
-
+    let sound = new Audio(this.file)
+    sound.play();
 }
 
 function init(){
@@ -70,10 +69,6 @@ function init(){
         ul.appendChild(li);
     })
 
-  
-    
-
- 
 
     window.onkeydown = log;
 
@@ -84,7 +79,6 @@ function init(){
             }
         })
     }
-
 }
 
 init(); 
