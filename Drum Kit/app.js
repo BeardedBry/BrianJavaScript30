@@ -1,10 +1,12 @@
 const drum = document.getElementById('drum');
 const ul = document.createElement('ul');
 
+
 const drumKeys = [
     {
         name: 'a',
         sound: hit,
+        source: 'kick',
     },
     {
         name: 's',
@@ -43,10 +45,18 @@ const drumKeys = [
 function hit(){
     console.log(this.name);
     let h = document.querySelector(`.${this.name}`);
+
+    // Animation
     h.classList.add('blink');
     setTimeout(()=>{
         h.classList.remove('blink');
     },100)
+
+    const audioKick = new Audio('sounds/NW_Kick 1.wav')
+    const audioCtx = new window.AudioContext();
+    const kick = audioCtx.createMediaElementSource(audioKick);
+    kick.connect(audioCtx.destination);
+    kick.play();
 
 }
 
@@ -60,6 +70,11 @@ function init(){
         ul.appendChild(li);
     })
 
+  
+    
+
+ 
+
     window.onkeydown = log;
 
     function log(e){
@@ -69,6 +84,7 @@ function init(){
             }
         })
     }
+
 }
 
 init(); 
