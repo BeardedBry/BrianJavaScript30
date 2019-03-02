@@ -17,34 +17,34 @@
             height: 10px;
             background: yellow;
             transform-origin: 0%;
-            animation-name: spin;
             animation-duration: 216,000s;
-            animation-iteration-count: infinite;
         }
         .min-hand{
             width: 200px;
             height: 8px;
             background: green;
             transform-origin: 0%;
-            animation-name: spin;
             animation-duration: 3600s;
-            animation-iteration-count: infinite;
         }
         .second-hand{
             width: 180px;
             height: 3px;
             background: blue;
             transform-origin: 0%;
-            animation-name: spin;
             animation-duration: 60s;
+        }
+
+        .hand{
+            animation-name: spin;
             animation-iteration-count: infinite;
+            animation-timing-function: linear;
         }
         /* .rotation{
             transform: rotate(+5deg);
         } */
 
         @keyframes spin {
-            0% {transform: rotate(0deg);}
+            50% {transform: rotate(180deg);}
             100% {transform: rotate(360deg);}
         }
     </style>
