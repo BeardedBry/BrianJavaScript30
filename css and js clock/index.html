@@ -15,17 +15,37 @@
         .hour-hand{
             width: 200px;
             height: 10px;
-            background: blue;
+            background: yellow;
+            transform-origin: 0%;
+            animation-name: spin;
+            animation-duration: 216,000s;
+            animation-iteration-count: infinite;
         }
         .min-hand{
             width: 200px;
             height: 8px;
-            background: blue;
+            background: green;
+            transform-origin: 0%;
+            animation-name: spin;
+            animation-duration: 3600s;
+            animation-iteration-count: infinite;
         }
         .second-hand{
-            width: 200px;
+            width: 180px;
             height: 3px;
             background: blue;
+            transform-origin: 0%;
+            animation-name: spin;
+            animation-duration: 60s;
+            animation-iteration-count: infinite;
+        }
+        /* .rotation{
+            transform: rotate(+5deg);
+        } */
+
+        @keyframes spin {
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(360deg);}
         }
     </style>
 </head>
@@ -42,7 +62,12 @@
 </body>
 
 <script>
+    const scndHand = document.querySelector('.second-hand');
+    window.onkeydown = log;
 
+    function log(){
+        scndHand.classList.toggle('rotation');
+    }
 </script>
 
 </html>
