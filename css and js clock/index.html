@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>JavaScript 30 Day 2 - CSS and JS Clock</title>
     <style>
         .wrapper{
             display: flex;
@@ -13,21 +13,21 @@
             margin-top: 25%;
         }
         .hour-hand{
-            width: 200px;
+            width: 165px;
             height: 10px;
             background: yellow;
             transform-origin: 0%;
-            animation-duration: 216,000s;
+            animation-duration: 86400s;
         }
         .min-hand{
-            width: 200px;
+            width: 190px;
             height: 8px;
             background: green;
             transform-origin: 0%;
             animation-duration: 3600s;
         }
         .second-hand{
-            width: 180px;
+            width: 195px;
             height: 3px;
             background: blue;
             transform-origin: 0%;
@@ -39,9 +39,6 @@
             animation-iteration-count: infinite;
             animation-timing-function: linear;
         }
-        /* .rotation{
-            transform: rotate(+5deg);
-        } */
 
         @keyframes spin {
             50% {transform: rotate(180deg);}
@@ -62,12 +59,18 @@
 </body>
 
 <script>
-    const scndHand = document.querySelector('.second-hand');
+    const secHand = document.querySelector('.second-hand');
+    const minHand = document.querySelector('.min-hand');
+    const hourHand = document.querySelector('.hour-hand');
+    
     window.onkeydown = log;
 
     function log(){
-        scndHand.classList.toggle('rotation');
+        let date = new Date();
+        console.log(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
     }
+
+
 </script>
 
 </html>
