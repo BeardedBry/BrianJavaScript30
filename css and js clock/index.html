@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <title>JavaScript 30 Day 2 - CSS and JS Clock</title>
     <style>
-        .body{
-            background-color: #F0eaD6;
+        body{
             background: center fixed;
+            background-image: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,14,2) ); 
             height: 100%;
+            padding: 50px;
+            color: #EFE9F4;
         }
         .wrapper{
             display: inline-block;
@@ -16,7 +18,7 @@
             text-align: center;
         }
         .clock {
-            margin-top: 20%;
+            margin-top: 10%;
             margin-right: 25%;
         }
         .clock-face{
@@ -29,26 +31,39 @@
             width: 300px;
             height: 300px;
             border-radius: 150px;
-            background: grey;
+            background-color: #FFFFFA;
+            border: solid 3px #EFE9F4;
+        }
+        .clock-center{
+            position: absolute;
+            top: 136px;
+            left: 135px;
+            width: 30px;
+            height: 30px;
+            border-radius: 30px;
+            background-color:#FFFFFA;
+            border: solid 2px #EFE9F4;
         }
         .hour-hand{
-            width: 130px;
-            height: 10px;
-            background: yellow;
+            width: 118px;
+            height: 14px;
+            border-radius: 2px;
+            background: #0792BA;
             transform-origin: 0%;
             animation-duration: 86400s;
         }
         .min-hand{
-            width: 145px;
-            height: 8px;
-            background: green;
+            width: 140px;
+            height: 10px;
+            border-radius: 2px;
+            background: #08B2E3;
             transform-origin: 0%;
             animation-duration: 3600s;
         }
         .second-hand{
             width: 150px;
             height: 3px;
-            background: blue;
+            background:#08B2E3;
             transform-origin: 0%;
             animation-duration: 60s;
         }
@@ -64,19 +79,20 @@
         }
 
         @keyframes spin {
-            50% {transform: rotate(180deg);}
             100% {transform: rotate(360deg);}
         }
     </style>
 </head>
 <body>
     <div class="wrapper">
+        <h1 class="display-time">CSS and JS Clock</h3>
         <div class="clock">
             <div class="clock-face">
                 <div class="clock-back"></div>
+                <div class="hand second-hand"></div>
                 <div class="hand hour-hand"></div>
                 <div class="hand min-hand"></div>
-                <div class="hand second-hand"></div>
+                <div class="clock-center"></div>
             </div>
         </div>
     </div>
@@ -86,11 +102,19 @@
     const secHand = document.querySelector('.second-hand');
     const minHand = document.querySelector('.min-hand');
     const hourHand = document.querySelector('.hour-hand');
- 
+    const displayTime = document.querySelector('.display-time');
+
     var date = new Date();
+    //console.log()
     hourHand.setAttribute('style',`transform: rotate(${.5 * (60 * date.getHours() + date.getMinutes())-90}deg);`)
     minHand.setAttribute('style',`transform: rotate(${(6 * date.getMinutes())-90}deg);`)
     secHand.setAttribute('style',`transform: rotate(${(6 * date.getSeconds())-90}deg);`)
+
+
+   displayTime.innerHTML = (`${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()}`);
+ 
+    
+    
 
 </script>
 
