@@ -4,30 +4,49 @@
     <meta charset="UTF-8">
     <title>JavaScript 30 Day 2 - CSS and JS Clock</title>
     <style>
+        .body{
+            background-color: #F0eaD6;
+            background: center fixed;
+            height: 100%;
+        }
         .wrapper{
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-block;
+            margin: auto;
+            width: 100%;
+            text-align: center;
         }
         .clock {
-            margin-top: 25%;
+            margin-top: 20%;
+            margin-right: 25%;
+        }
+        .clock-face{
+            margin: 0 auto;
+            display: inline-block;
+            position: relative;
+        }
+        .clock-back{
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 150px;
+            background: grey;
         }
         .hour-hand{
-            width: 165px;
+            width: 130px;
             height: 10px;
             background: yellow;
             transform-origin: 0%;
             animation-duration: 86400s;
         }
         .min-hand{
-            width: 190px;
+            width: 145px;
             height: 8px;
             background: green;
             transform-origin: 0%;
             animation-duration: 3600s;
         }
         .second-hand{
-            width: 195px;
+            width: 150px;
             height: 3px;
             background: blue;
             transform-origin: 0%;
@@ -35,6 +54,9 @@
         }
 
         .hand{
+            position: absolute;
+            top: 150px;
+            left: 150px;
             animation-name: spin;
             animation-iteration-count: infinite;
             animation-timing-function: linear;
@@ -50,6 +72,7 @@
     <div class="wrapper">
         <div class="clock">
             <div class="clock-face">
+                <div class="clock-back"></div>
                 <div class="hand hour-hand"></div>
                 <div class="hand min-hand"></div>
                 <div class="hand second-hand"></div>
