@@ -54,6 +54,7 @@
         }
 
         .hand{
+            /*transform: rotate(-90deg);*/
             position: absolute;
             top: 150px;
             left: 150px;
@@ -85,14 +86,11 @@
     const secHand = document.querySelector('.second-hand');
     const minHand = document.querySelector('.min-hand');
     const hourHand = document.querySelector('.hour-hand');
-    
-    window.onkeydown = log;
-
-    function log(){
-        let date = new Date();
-        console.log(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
-    }
-
+ 
+    var date = new Date();
+    hourHand.setAttribute('style',`transform: rotate(${.5 * (60 * date.getHours() + date.getMinutes())-90}deg);`)
+    minHand.setAttribute('style',`transform: rotate(${(6 * date.getMinutes())-90}deg);`)
+    secHand.setAttribute('style',`transform: rotate(${(6 * date.getSeconds())-90}deg);`)
 
 </script>
 
