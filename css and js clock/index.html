@@ -69,10 +69,12 @@
         }
 
         .hand{
-            /*transform: rotate(-90deg);*/
+            transform: rotate(-90deg);
             position: absolute;
             top: 150px;
             left: 150px;
+            transition: all .05s;
+            transition-timing-function: cubic-bezier(0.25, 0.1, 0.58, 2.58);
             /* animation-name: spin;
             animation-iteration-count: infinite;
             animation-timing-function: linear; */
@@ -108,12 +110,19 @@
     minHand.setAttribute('style',`transform: rotate(${(6 * initDate.getMinutes())-90}deg);`)
 
     function updateClock(){
-        
+
         let date = new Date();
+
+        if(date.getSeconds() >= 59 && date.getSeconds() <= 1){
+            document.querySelector('.hand').setAttribute('style','transition: null');
+        }else{
+            document.querySelector('.hand').setAttribute('style','transition: all .05s;');
+        }
         if(date.getSeconds() === 0){
             hourHand.setAttribute('style',`transform: rotate(${.5 * (60 * date.getHours() + date.getMinutes())-90}deg);`)
             minHand.setAttribute('style',`transform: rotate(${(6 * date.getMinutes())-90}deg);`)
         }
+
         secHand.setAttribute('style',`transform: rotate(${(6 * date.getSeconds())-90}deg);`)
 
         displayTime.innerHTML = (`${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()}`);
