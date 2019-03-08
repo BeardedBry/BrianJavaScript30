@@ -9,3 +9,5 @@ This takes longer, but I believe its more fun and I learn more. Also it is inter
 ## Project 1 - JS Drum Kit
 
 ![JS Drum Kit](screenshots/day1.png)
+
+I had a lot of fun coding this. There isn't much to say about this one. I liked organizing the code in way that made it easy to change the data, just by editing objects in my drumKeys Array. 
