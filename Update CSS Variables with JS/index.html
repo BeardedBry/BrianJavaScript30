@@ -1,9 +1,55 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Updating CSS with Variables using JS</title>
-    </head>
-    <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+
+        /* Variables */
+        :root {
+        --base-color: orange;
+        }
+
+        #wrapper {
+            display: block;
+            text-align: center;
+        }
+
+        #img{
+            margin: 0 auto;
+            margin-top: 10px;
+            background-image: url('luca-carra-1316710-unsplash.jpg');
+            background-position: center;
+            background-repeat: no-repeat; 
+            background-size: contain;
+            background-color: var(--base-color);
+            height: 500px;
+            width: 80%;
+        }
+        .jsText {
+            color: var(--base-color);
+        }
+    </style>
+    <title>Updating CSS Variables with JS</title>
+</head>
+<body>
+    <div id="wrapper">
         <h1>Updating CSS with variables in <span class='jsText'>JS</span></h1>
-    </body>
+        <h2>Spacing: </h2>
+        <input type="range" id="spacing">
+        <h2>Blur: </h2>
+        <input type="range" id="blur">
+        <h2>Base Color: </h2>
+        <input type="color" id="colorPicker">
+        <br>
+        <div id="img">
+            <!-- <img src="luca-carra-1316710-unsplash.jpg" alt="Photo by Luca Carrà on Unsplash"> -->
+        </div>
+    </div>
+
+    <script>
+        
+    </script>
+</body>
 </html>
