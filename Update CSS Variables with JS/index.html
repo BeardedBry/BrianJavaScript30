@@ -25,7 +25,7 @@
             background-size: contain;
             background-color: var(--base-color);
             height: 500px;
-            width: 80%;
+            width: 38.5vw;
         }
         .jsText {
             color: var(--base-color);
@@ -49,7 +49,16 @@
     </div>
 
     <script>
-        
+        const colorChange = document.getElementById("colorPicker");
+        const root = document.getElementsByTagName('HTML')[0];
+        colorChange.value = "#FFA500"; // inital value;
+
+
+        colorChange.addEventListener('change', (e)=>{
+            console.log(e.target.value);
+            root.style.setProperty('--base-color', e.target.value);
+        })
+
     </script>
 </body>
 </html>
