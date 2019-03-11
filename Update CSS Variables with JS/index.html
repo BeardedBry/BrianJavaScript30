@@ -9,6 +9,8 @@
         /* Variables */
         :root {
         --base-color: orange;
+        --blur-ammount: 0px;
+        --opacity: 100;
         }
 
         #wrapper {
@@ -16,16 +18,22 @@
             text-align: center;
         }
 
+        #imgBG{
+            background-color: var(--base-color);
+        }
+
         #img{
             margin: 0 auto;
             margin-top: 10px;
-            background-image: url('luca-carra-1316710-unsplash.jpg');
+            background-image: url('luca-carra-1316710-unsplash.jpg'); /* "Photo by Luca Carrà on Unsplash" */
             background-position: center;
             background-repeat: no-repeat; 
             background-size: contain;
-            background-color: var(--base-color);
+            
+            filter: blur(var(--blur-ammount)) opacity(var(--opacity));
             height: 500px;
             width: 38.5vw;
+            
         }
         .jsText {
             color: var(--base-color);
@@ -36,27 +44,41 @@
 <body>
     <div id="wrapper">
         <h1>Updating CSS with variables in <span class='jsText'>JS</span></h1>
-        <h2>Spacing: </h2>
-        <input type="range" id="spacing">
+        <h2>Opacity: </h2>
+        <input type="range" id="opacity">
         <h2>Blur: </h2>
-        <input type="range" id="blur">
+        <input type="range" id="blur" value="10" min="0" max="21">
         <h2>Base Color: </h2>
         <input type="color" id="colorPicker">
         <br>
-        <div id="img">
-            <!-- <img src="luca-carra-1316710-unsplash.jpg" alt="Photo by Luca Carrà on Unsplash"> -->
+        <div id="imgBG">
+            <div id="img"></div>
         </div>
     </div>
 
     <script>
         const colorChange = document.getElementById("colorPicker");
+        const blurChange = document.getElementById("blur");
+        const opacityChange = document.getElementById("opacity");
+
         const root = document.getElementsByTagName('HTML')[0];
+       
         colorChange.value = "#FFA500"; // inital value;
 
 
         colorChange.addEventListener('change', (e)=>{
-            console.log(e.target.value);
+            //console.log(e.target.value);
             root.style.setProperty('--base-color', e.target.value);
+        })
+
+        blurChange.addEventListener('change', (e)=>{
+            console.log(e.target.value);
+            root.style.setProperty('--blur-ammount', e.target.value + 'px');
+        })
+
+        opacityChange.addEventListener('change', (e)=>{
+            //console.log(e.target.value);
+            root.style.setProperty('--opacity', e.target.value * .01);
         })
 
     </script>
