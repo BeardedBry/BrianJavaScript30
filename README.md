@@ -1,6 +1,6 @@
 # BrianJavaScript30
 
-Going through Wes Bos's JavaScript 30 challenge.
+Going through Wes Bos's JavaScript 30 challenges in Hard Mode.
 https://javascript30.com/
 
 My Strategy has been to watch just the beginning of the videos and try to work out a solution on my own. And then finish the video to see how Wes did it.
@@ -22,5 +22,13 @@ Creating this was a challenge. I hadn't used CSS transformation or had to access
 At first I had tried to create the moving hands by grabbing the date, setting the hands, then using animations and keyframes to rotate 360 degrees. The clock would always end up out of sync pretty quick this way. 
 Instead, it now grabs the date every second and then sets the hands to that. 
 
-New concepts: CSS transformations, animations, keyframes, setting stlyes in JS.
+New concepts: CSS transformations, animations, keyframes, setting styles in JS.
+
+
+
+## Project 3 - Update CSS Variables in JS
+
+![CSS Variables](screenshots/day3.png)
+
+It was awesome to learn how useful CSS variables are. They way I accessed them in my JavaScript was a little different from Wes. I enjoy these challenges, but watching how Wes completes them is almost discouraging because of how efficient he is! Learning about data- and the dataset objects from his video will be useful.
 
