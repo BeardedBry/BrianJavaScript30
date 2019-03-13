@@ -10,7 +10,16 @@
         :root {
         --base-color: orange;
         --blur-ammount: 0px;
-        --opacity: 100;
+        --spacing: 0px;
+        }
+
+        body{
+            background: linear-gradient(to top, rgba(167,207,223,1) 43%,rgba(167,207,223,1) 48%,rgba(35,83,138,1) 99%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100%;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
 
         #wrapper {
@@ -18,23 +27,27 @@
             text-align: center;
         }
 
-        #imgBG{
-            background-color: var(--base-color);
-        }
-
         #img{
             margin: 0 auto;
             margin-top: 10px;
-            background-image: url('luca-carra-1316710-unsplash.jpg'); /* "Photo by Luca Carrà on Unsplash" */
+            /* background-image: url('luca-carra-1316710-unsplash.jpg');
             background-position: center;
             background-repeat: no-repeat; 
-            background-size: contain;
+            background-size: contain; */
+            /* box-shadow: 10px 10px var(--base-color); */
+            filter: blur(var(--blur-ammount));
             
-            filter: blur(var(--blur-ammount)) opacity(var(--opacity));
-            height: 500px;
-            width: 38.5vw;
-            
+            height: 500px;  
         }
+
+        .image{
+            position: relative;
+            width: 600px;
+            box-shadow: 5px 5px var(--base-color);
+            top: var(--spacing);
+            left: var(--spacing);
+        }
+
         .jsText {
             color: var(--base-color);
         }
@@ -44,22 +57,22 @@
 <body>
     <div id="wrapper">
         <h1>Updating CSS with variables in <span class='jsText'>JS</span></h1>
-        <h2>Opacity: </h2>
-        <input type="range" id="opacity">
+        <h2>Spacing: </h2>
+        <input type="range" id="spacing" value="0">
         <h2>Blur: </h2>
-        <input type="range" id="blur" value="10" min="0" max="21">
+        <input type="range" id="blur" value="0" min="0" max="21">
         <h2>Base Color: </h2>
         <input type="color" id="colorPicker">
         <br>
-        <div id="imgBG">
-            <div id="img"></div>
+        <div id="img">
+            <img src="luca-carra-1316710-unsplash.jpg" alt="Photo by Luca Carrà on Unsplash" class="image">
         </div>
     </div>
 
     <script>
         const colorChange = document.getElementById("colorPicker");
         const blurChange = document.getElementById("blur");
-        const opacityChange = document.getElementById("opacity");
+        const spacingChange = document.getElementById("spacing");
 
         const root = document.getElementsByTagName('HTML')[0];
        
@@ -76,9 +89,9 @@
             root.style.setProperty('--blur-ammount', e.target.value + 'px');
         })
 
-        opacityChange.addEventListener('change', (e)=>{
+        spacingChange.addEventListener('change', (e)=>{
             //console.log(e.target.value);
-            root.style.setProperty('--opacity', e.target.value * .01);
+            root.style.setProperty('--spacing', e.target.value + 'px');
         })
 
     </script>
