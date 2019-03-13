@@ -10,7 +10,7 @@
         :root {
         --base-color: orange;
         --blur-ammount: 0px;
-        --spacing: 0px;
+        --spacing: 10px;
         }
 
         body{
@@ -43,9 +43,10 @@
         .image{
             position: relative;
             width: 600px;
-            box-shadow: 5px 5px var(--base-color);
-            top: var(--spacing);
-            left: var(--spacing);
+            padding: var(--spacing);
+            /* top: var(--spacing);
+            left: var(--spacing); */
+            background-color: var(--base-color);
         }
 
         .jsText {
@@ -58,7 +59,7 @@
     <div id="wrapper">
         <h1>Updating CSS with variables in <span class='jsText'>JS</span></h1>
         <h2>Spacing: </h2>
-        <input type="range" id="spacing" value="0">
+        <input type="range" id="spacing" value="10">
         <h2>Blur: </h2>
         <input type="range" id="blur" value="0" min="0" max="21">
         <h2>Base Color: </h2>
