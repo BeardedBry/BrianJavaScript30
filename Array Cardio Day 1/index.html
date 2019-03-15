@@ -50,10 +50,40 @@
             //console.log(totalYears);
 
     // 5. Sort the inventors by years lived
+
+            const years = inventors.sort((i, ii) => {
+              return (ii.passed - ii.year) - (i.passed - i.year);
+            })
+            //console.log(years);
+        
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+
+    const cities = [ 'Boulevard de l\'Amiral-Bruix', 'Boulevard Beaumarchais', 'Boulevard Barbès',
+     'Boulevard Auguste-Blanqui', 'Boulevards of the Marshals', 'Haussmann\'s renovation of Paris',
+     'Boulevard de Rochechouart'];
+
+            const de_cities = cities.filter((city) => {
+              const regEx = /de+/ig;
+              return regEx.test(city);
+            })
+            //console.log(de_cities)
+
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+
+            const lastNames = inventors.map(i => i.last).sort()
+            const sortedLastNames = [];
+            for(let i = 0; i < lastNames.length; i++){
+              let index = inventors.findIndex(function(el){
+                return lastNames[i] == el.last;
+              })
+              sortedLastNames.push(inventors[index])
+            }
+
+           console.log(sortedLastNames);
+          
+
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
