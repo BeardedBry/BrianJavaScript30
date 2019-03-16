@@ -81,12 +81,24 @@
               sortedLastNames.push(inventors[index])
             }
 
-           console.log(sortedLastNames);
+           //console.log(sortedLastNames);
           
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
+
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    const reduced = data.reduce(function(acc,el,index,arr){
+      if(!acc[el]){
+        acc[el] = 1;
+      }else{
+        acc[el]++;
+      }
+      return acc;
+    },{})
+
+    console.log(reduced);
   </script>
 </body>
 </html>
