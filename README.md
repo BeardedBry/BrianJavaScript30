@@ -32,3 +32,9 @@ New concepts: CSS transformations, animations, keyframes, setting styles in JS.
 
 It was awesome to learn how useful CSS variables are. They way I accessed them in my JavaScript was a little different from Wes. I enjoy these challenges, but watching how Wes completes them is almost discouraging because of how efficient he is! Learning about data- and the dataset objects from his video will be useful.
 
+
+## Project 4 - Array Cardio Day 1
+![Array Cardio](screenshots/day4.png)
+
+Most of these array methods I felt pretty comfortable with already. It was good to get more practice using .reduce().
+Watching Wes's videos gave me a better understanding of .sort().
