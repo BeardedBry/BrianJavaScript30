@@ -71,17 +71,12 @@
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+            const firstNames = people.map(e => e.slice(e.indexOf(',')+2)).sort(); // sorting by first names.
 
-            const lastNames = inventors.map(i => i.last).sort()
-            const sortedLastNames = [];
-            for(let i = 0; i < lastNames.length; i++){
-              let index = inventors.findIndex(function(el){
-                return lastNames[i] == el.last;
-              })
-              sortedLastNames.push(inventors[index])
-            }
+          //const newPeople = people.sort()
 
-           //console.log(sortedLastNames);
+           console.log(firstNames);
+
           
 
     // 8. Reduce Exercise
@@ -98,7 +93,7 @@
       return acc;
     },{})
 
-    console.log(reduced);
+   // console.log(reduced);
   </script>
 </body>
 </html>
