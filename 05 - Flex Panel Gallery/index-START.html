@@ -56,7 +56,7 @@
       background-position: center;
     }
 
-    .panel:hover {
+    .grow {
       flex-grow: 25;
     }
 
@@ -121,6 +121,27 @@
   </div>
 
   <script>
+
+    const allPanels = document.querySelectorAll('div.panel');
+
+   // console.log(allPanels);
+
+    allPanels.forEach(function(item){
+
+      item.addEventListener('click',(event)=>{
+
+        let grown = document.querySelectorAll('.grow');
+        grown.forEach((g) =>{
+          if(g !== event.target)
+           g.classList.remove('grow')
+        })
+        
+        if(event.target.classList.contains('panel')){
+          event.target.classList.toggle('grow');
+        }
+        
+      })
+    })
 
   </script>
 
