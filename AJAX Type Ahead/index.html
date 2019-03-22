@@ -15,6 +15,24 @@
     </main>
     <script>
         const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+        let data;
+        fetch(endpoint).then((d) => d.json()).then(newData => data = newData);
+
+        const txt = document.getElementById('textArea');
+        const results = document.getElementById('results');
+
+        txt.addEventListener('input',(e)=>{
+            let eRegex = new RegExp(`${e.target.value}`,'gi');
+            let displayData = data.filter((d) => {
+                return d.city.match(eRegex);
+            })
+            displayData.forEach(element => {
+                let newP = document.createElement('P');
+                newP.innerText = `${element.city}`;
+                results.appendChild(newP);
+            });
+        })
+      
     </script>
   </body>
 </html>
