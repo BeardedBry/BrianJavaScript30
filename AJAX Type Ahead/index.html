@@ -3,7 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Ajax Type Ahead</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    /* border: 1px solid red; */
+    margin-right: auto;
+    margin-left: auto;
+    width: 70%;
+    padding-top: 30vh;
+}
+
+.search{
+    /* border: 1px solid green; */
+    width: 100%;
+    text-align: center;
+}
+
+.search > input {
+    /* Need to center in main area */
+    text-align: center;
+    font-size: 2.3rem;
+    border: 4px double grey;
+    width: 100%;
+    max-width: 400px;
+}
+</style>
 </head>
 <body>
     <main>
@@ -22,15 +51,29 @@
         const results = document.getElementById('results');
 
         txt.addEventListener('input',(e)=>{
-            let eRegex = new RegExp(`${e.target.value}`,'gi');
-            let displayData = data.filter((d) => {
-                return d.city.match(eRegex);
-            })
-            displayData.forEach(element => {
+            let eRegex = new RegExp(`${e.target.value}\?`,'gi');
+            let currentEntries = document.querySelectorAll('div > p');
+            if(currentEntries.length > 0){
+                console.log(currentEntries);
+                currentEntries.forEach((item) => {
+                    if (!item.innerText.match(eRegex)){
+                        item.parentElement.removeChild(item);
+                    }
+                })
+                // (e => !e.innerText.match(RegExp))
+                // entriesToBeDeleted.forEach(item => '');
+
+            } else{
+                let displayData = data.filter((d) => {
+                    return d.city.match(eRegex);
+                })
+                displayData.forEach(element => {
                 let newP = document.createElement('P');
                 newP.innerText = `${element.city}`;
                 results.appendChild(newP);
             });
+            }
+          
         })
       
     </script>

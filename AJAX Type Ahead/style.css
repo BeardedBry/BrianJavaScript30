@@ -4,7 +4,7 @@
 }
 
 main{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin-right: auto;
     margin-left: auto;
     width: 70%;
@@ -12,13 +12,14 @@ main{
 }
 
 .search{
-    border: 1px solid green;
+    /* border: 1px solid green; */
     width: 100%;
     text-align: center;
 }
 
 .search > input {
     /* Need to center in main area */
+    text-align: center;
     font-size: 2.3rem;
     border: 4px double grey;
     width: 100%;
