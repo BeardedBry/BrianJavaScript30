@@ -51,7 +51,7 @@ main{
         const results = document.getElementById('results');
 
         txt.addEventListener('input',(e)=>{
-            let eRegex = new RegExp(`${e.target.value}\?`,'gi');
+            let eRegex = new RegExp(`${e.target.value}`,'gi');
             let currentEntries = document.querySelectorAll('div > p');
             if(currentEntries.length > 0){
                 console.log(currentEntries);
