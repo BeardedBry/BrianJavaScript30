@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Ajax Type Ahead</title>
   <link rel="stylesheet" href="style.css"> 
+  <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
 </head>
 <body>
     <main>
@@ -36,10 +37,8 @@
             displayData = data.filter((d) => {
                 return d.city.match(eRegex) || d.state.match(eRegex);
             })
-
-            let promise = new Promise(function(resolve, reject){
-                resolve(display(displayData));
-            })
+            display(displayData);
+            
 
         });
 
@@ -48,18 +47,18 @@
                     let displayDiv = document.createElement('DIV');
                     displayDiv.classList.add('entry');
                     let newP = document.createElement('P');
-                    newP.innerText = `${element.city}, ${element.state}`;
+                    newP.innerHTML = `<b>${element.city}</b>, <i>${element.state}</i>`;
                     displayDiv.appendChild(newP)
                     results.appendChild(displayDiv);
                 });
         }
 
-           function removeEntries(){
+        function removeEntries(){
             currentResults = document.getElementById('results');
                 while(currentResults.lastElementChild){
                     currentResults.lastElementChild.remove();
                 }
-           }
+        }
       
     </script>
   </body>
