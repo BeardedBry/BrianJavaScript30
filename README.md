@@ -38,3 +38,15 @@ It was awesome to learn how useful CSS variables are. They way I accessed them i
 
 Most of these array methods I felt pretty comfortable with already. It was good to get more practice using .reduce().
 Watching Wes's videos gave me a better understanding of .sort().
+
+
+## Project 5 - Flex Panel Gallery
+![Flex Panels](screenshots/day5.png)
+
+I cheated a little on this one. I used the starter file provided. It was good to get some practice in with flex-box, and learning the value of nesting flex boxes.
+
+
+## Project 6 - AJAX Type Ahead
+![Ajax Type Ahead](screenshots/day6.png)
+
+I used a dynamically created Regular Expression for finding matches. At first attempt this ran very clunky. After refactoring the code it ran smoothly.
