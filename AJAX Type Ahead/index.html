@@ -15,101 +15,51 @@
         </div>
     </main>
     <script>
-        const ENDPOINT = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
-
-        let data, eRegex, stateTxt, lastTxtField;
-        const DISPLAY_DATA = [];
-
-        fetch(ENDPOINT).then((d) => d.json()).then(newData => data = newData);
+        const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+        let data, eRegex, stateTxt;
+        fetch(endpoint).then((d) => d.json()).then(newData => data = newData);
 
         const txt = document.getElementById('textArea');
         const results = document.getElementById('results');
 
         txt.addEventListener( 'input', (e)=> {
+   
             stateTxt = e.target.value; // Control typed in data.
             txt.value = stateTxt;
+
+            removeEntries();
+            if(stateTxt == ''){return;}
+
             eRegex = new RegExp(`${stateTxt.trim()}`,'gi');
 
-            txt.addEventListener('keyup', (event) => {
 
-                console.log(stateTxt);
-                // Refine search
-                let currentEntries = [] //[...document.querySelectorAll('div > p')];
+            displayData = data.filter((d) => {
+                return d.city.match(eRegex) || d.state.match(eRegex);
+            })
 
-                // if(currentEntries.length > 0){ 
-                //     console.log(currentEntries);
-                //     currentEntries.forEach((entry) => {
-                //         if (!entry.innerText.match(eRegex)){
-                //             entry.parentElement.removeChild(entry);
-                //         }
-                //     })
-                // }
+            let promise = new Promise(function(resolve, reject){
+                resolve(display(displayData));
+            })
 
-                // Search and filter
-                
-                // PLAN IS TO FILTER THE DATA PER SEARCH, FILTER THE ALREADY DISPLAYED DATA, REMOVE WHAT ISNT IN THE NEW SEARCH, ADD WHATS MISSING. WIP
-
-                for( let i=0; i < data.length; i++ ) {
-                    
-                    if( data[i].state.match(eRegex) || data[i].city.match(eRegex) ) {
-
-                        currentEntries.push(data[i]); 
-    
-                        for( let inner = 0; inner < currentEntries.length; inner++ ) { // Inner loop to check entries
-                            
-                        }
-
-                    }
-
-                }
-
-                displayData = data.filter((d) => {
-
-                    return d.city.match(eRegex);
-                })
-
-
-                displayData.forEach(element => {
-                    let newP = document.createElement('P');
-                    newP.innerText = `${element.city}`;
-                    results.appendChild(newP);
-                });
-            });
         });
 
-      
+        function display(theData){
+            theData.forEach(element => {
+                    let displayDiv = document.createElement('DIV');
+                    displayDiv.classList.add('entry');
+                    let newP = document.createElement('P');
+                    newP.innerText = `${element.city}, ${element.state}`;
+                    displayDiv.appendChild(newP)
+                    results.appendChild(displayDiv);
+                });
+        }
 
-
-
-
-
-
-        // txt.addEventListener('input',(e)=>{
-        //     eRegex = new RegExp(`${e.target.value.trim()}`,'gi');
-        //     let currentEntries = document.querySelectorAll('div > p');
-
-        // // Refine search
-        //     if(currentEntries.length > 0){ 
-        //         console.log(currentEntries);
-        //         currentEntries.forEach((item) => {
-        //             if (!item.innerText.match(eRegex)){
-        //                 item.parentElement.removeChild(item);
-        //             }
-        //         })
-        // // Initial Search
-        //     }else if(txt.value.length <= 1 || lastTxtField > txt.value.length){
-        //         displayData = data.filter((d) => {
-        //             return d.city.match(eRegex);
-        //         })
-        //         displayData.forEach(element => {
-        //         let newP = document.createElement('P');
-        //         newP.innerText = `${element.city}`;
-        //         results.appendChild(newP);
-        //     });
-        //     }
-        //     lastTxtField = txt.value.length;
-          
-        // })
+           function removeEntries(){
+            currentResults = document.getElementById('results');
+                while(currentResults.lastElementChild){
+                    currentResults.lastElementChild.remove();
+                }
+           }
       
     </script>
   </body>
