@@ -50,3 +50,4 @@ I cheated a little on this one. I used the starter file provided. It was good to
 ![Ajax Type Ahead](screenshots/day6.png)
 
 I used a dynamically created Regular Expression for finding matches. At first attempt this ran very clunky. After refactoring the code it ran smoothly.
+EDIT: Now has highlighting matching text. This was difficult to figure out at first. Eventually I discovered the innerHTML.replace() method.
