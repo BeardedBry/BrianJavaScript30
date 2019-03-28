@@ -33,12 +33,10 @@
 
             eRegex = new RegExp(`${stateTxt.trim()}`,'gi');
 
-
             displayData = data.filter((d) => {
                 return d.city.match(eRegex) || d.state.match(eRegex);
             })
             display(displayData);
-            
 
         });
 
@@ -47,8 +45,13 @@
                     let displayDiv = document.createElement('DIV');
                     displayDiv.classList.add('entry');
                     let newP = document.createElement('P');
-                    newP.innerHTML = `<b>${element.city}</b>, <i>${element.state}</i>`;
+
+                    let newHtml = `<b>${element.city}</b>, <i>${element.state}</i>, ${element.population}`;
+                    newHtml = newHtml.replace(eRegex,`<span class="highlight">${eRegex.source}</span>`);
+                    newP.innerHTML = newHtml;
+
                     displayDiv.appendChild(newP)
+
                     results.appendChild(displayDiv);
                 });
         }

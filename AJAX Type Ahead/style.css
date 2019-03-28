@@ -52,3 +52,7 @@ main{
 #results{
     margin-top: 2rem;
 }
+
+.highlight{
+    background-color: orange;
+}
