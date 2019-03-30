@@ -10,17 +10,21 @@
 
 <script>
   const canvas = document.querySelector('#draw');
+  const C = canvas.getContext('2d');
   console.log(canvas);
 
   canvas.onpointerdown = (e)=>{
     //console.log(e);
-    if(canvas.onmousemove == true){
-      console.log("client x: " + m.clientX);
-      console.log("client y: " + m.clientY);
-    }
-    // canvas.onmouseup = () =>{
-
+    // if(canvas.onmousemove == true){
+    //   console.log("client x: " + m.clientX);
+    //   console.log("client y: " + m.clientY);
     // }
+    C.beginPath();
+    C.moveTo(e.clientX,e.clientY)
+    canvas.onmouseup = (m) =>{
+      C.lineTo(m.clientX,m.clientY)
+      C.stroke();
+     }
     
   }
 
@@ -30,6 +34,9 @@
 <style>
   html, body {
     margin: 0;
+  }
+  canvas {
+    border: 1px solid black;
   }
 </style>
 
