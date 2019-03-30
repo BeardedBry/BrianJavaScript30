@@ -16,9 +16,16 @@
 
 
   canvas.onmouseup = (e)=>{
+      // Random size
     const randoSize = (Math.random()*(350-10)+10);
+     // Random Color
     C.fillStyle = `rgba(${rando(0,255)},${rando(0,255)},${rando(0,255)},${rando(0.1,1)})`;
+     // Creates our random shape
     C.fillRect(e.clientX-randoSize / 2,e.clientY-randoSize / 2 , randoSize , randoSize);
+    C.beginPath();
+    C.arc(e.clientX, e.clientY, randoSize, 0, Math.PI * 2, false);
+    C.strokeStyle = `rgba(${rando(0,255)},${rando(0,255)},${rando(0,255)},${rando(0.1,1)})`;
+    C.stroke();
   }
 
   function rando(min,max){
