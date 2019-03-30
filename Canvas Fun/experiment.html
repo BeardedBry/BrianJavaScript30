@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+</head>
+<body>
+<canvas id="draw" width="700px" height="600px"></canvas>
+
+
+<script>
+  const canvas = document.querySelector('#draw');
+  const C = canvas.getContext('2d');
+  console.log(canvas);
+  console.log(C);
+
+
+  canvas.onmouseup = (e)=>{
+    const randoSize = (Math.random()*(350-10)+10);
+    C.fillStyle = `rgba(${rando(0,255)},${rando(0,255)},${rando(0,255)},${rando(0.1,1)})`;
+    C.fillRect(e.clientX-randoSize / 2,e.clientY-randoSize / 2 , randoSize , randoSize);
+  }
+
+  function rando(min,max){
+      return Math.random()*(max-min) + min;
+  }
+
+
+</script>
+
+
+<style>
+  html, body {
+    margin: 0;
+  }
+  canvas {
+    border: 1px solid black;
+  }
+</style>
+
+</body>
+</html>
