@@ -11,22 +11,55 @@
 <script>
   const canvas = document.querySelector('#draw');
   const C = canvas.getContext('2d');
-  console.log(canvas);
+  let paint = false;
+  let shrink = true;
+  let width = 1;
+  const gradient = C.createLinearGradient(0,0, canvas.width,canvas.height);
+  gradient.addColorStop(0, 'yellow');
+  gradient.addColorStop(.5, 'cyan');
+  gradient.addColorStop(1, 'green');
 
-  canvas.onpointerdown = (e)=>{
-    //console.log(e);
-    // if(canvas.onmousemove == true){
-    //   console.log("client x: " + m.clientX);
-    //   console.log("client y: " + m.clientY);
-    // }
-    C.beginPath();
-    C.moveTo(e.clientX,e.clientY)
-    canvas.onmouseup = (m) =>{
-      C.lineTo(m.clientX,m.clientY)
-      C.stroke();
-     }
+function main(){
+ //requestAnimationFrame(main);
+  canvas.onmousedown = mouseDown;
+  canvas.onmousemove = mouseMove;
+  canvas.onmouseup = mouseUp;
+}
+
+function mouseDown(event){
+  paint = true;
+  C.beginPath();
+  width = 20;
+}
+
+function mouseUp(event){
+  paint = false;
+  C.closePath();
+}
+
+function mouseMove(event){
+  if(paint){
+    if(width >= 8){
+      shrink = true;
+    }else{
+      shrink = false;
+    }
+
+    if(shrink){
+      width-= .1;
+    }
+    
+    C.lineJoin = 'round';
+    //C.moveTo(event.clientX, event.clientY)
+    C.lineTo(event.clientX, event.clientY);
+    C.lineWidth = 1 + width;
+    C.strokeStyle = gradient;
+    C.stroke();
     
   }
+}
+
+main();
 
 </script>
 
