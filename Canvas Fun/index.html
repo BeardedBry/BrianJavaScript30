@@ -15,9 +15,14 @@
   let grow = true;
   let width = 1;
   let color = 1;
+  const gradient = C.createLinearGradient(0,0, canvas.width,canvas.height);
+  gradient.addColorStop(0, 'orange');
+  gradient.addColorStop(.5, 'cyan');
+  gradient.addColorStop(1, 'green');
   console.log(canvas);
 
 function main(){
+  
  //requestAnimationFrame(main);
   canvas.onmousedown = mouseDown;
   canvas.onmousemove = mouseMove;
@@ -27,9 +32,11 @@ function main(){
 function mouseDown(event){
   paint = true;
   C.beginPath();
+  C.lineJoin = 'round';
+  C.lineTo(event.clientX, event.clientY);
   //C.arc(event.clientX, event.clientY, 5+width, 0, Math.PI*2,0,false);
-  C.fillStyle = `rgb(${rando(0,25)},25,25)`;
-  C.fill();
+  C.strokeStyle = gradient;
+  C.stroke();
 }
 
 function mouseUp(event){
@@ -49,10 +56,15 @@ function mouseMove(event){
     }else{
       width-= .5;
     }
-    C.lineTo(event.clientX, event.clientY)
-    //C.arc(event.clientX, event.clientY, 5+width, 0, Math.PI*2,0,false);
-    C.fillStyle = `rgb(${rando(0,25)},25,25)`;
-    C.fill();
+    
+   
+    C.lineJoin = 'round';
+    //C.moveTo(event.clientX, event.clientY)
+    C.lineTo(event.clientX, event.clientY);
+    C.lineWidth = 1 + width;
+    C.strokeStyle = gradient;
+    C.stroke();
+    
   }
 }
 function rando(min,max){
