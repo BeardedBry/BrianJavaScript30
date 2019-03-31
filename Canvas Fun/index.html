@@ -12,17 +12,14 @@
   const canvas = document.querySelector('#draw');
   const C = canvas.getContext('2d');
   let paint = false;
-  let grow = true;
+  let shrink = true;
   let width = 1;
-  let color = 1;
   const gradient = C.createLinearGradient(0,0, canvas.width,canvas.height);
-  gradient.addColorStop(0, 'orange');
+  gradient.addColorStop(0, 'yellow');
   gradient.addColorStop(.5, 'cyan');
   gradient.addColorStop(1, 'green');
-  console.log(canvas);
 
 function main(){
-  
  //requestAnimationFrame(main);
   canvas.onmousedown = mouseDown;
   canvas.onmousemove = mouseMove;
@@ -32,11 +29,7 @@ function main(){
 function mouseDown(event){
   paint = true;
   C.beginPath();
-  C.lineJoin = 'round';
-  C.lineTo(event.clientX, event.clientY);
-  //C.arc(event.clientX, event.clientY, 5+width, 0, Math.PI*2,0,false);
-  C.strokeStyle = gradient;
-  C.stroke();
+  width = 20;
 }
 
 function mouseUp(event){
@@ -46,18 +39,16 @@ function mouseUp(event){
 
 function mouseMove(event){
   if(paint){
-    if(width == 1){
-      grow = true;
-    }else if(width == 15){
-      grow = false;
-    }
-    if(grow){
-      width+= .5;
+    if(width >= 8){
+      shrink = true;
     }else{
-      width-= .5;
+      shrink = false;
+    }
+
+    if(shrink){
+      width-= .1;
     }
     
-   
     C.lineJoin = 'round';
     //C.moveTo(event.clientX, event.clientY)
     C.lineTo(event.clientX, event.clientY);
@@ -67,13 +58,9 @@ function mouseMove(event){
     
   }
 }
-function rando(min,max){
-      return Math.random()*(max-min) + min;
-  }
-
-
 
 main();
+
 </script>
 
 
