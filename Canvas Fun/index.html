@@ -11,23 +11,57 @@
 <script>
   const canvas = document.querySelector('#draw');
   const C = canvas.getContext('2d');
+  let paint = false;
+  let grow = true;
+  let width = 1;
+  let color = 1;
   console.log(canvas);
 
-  canvas.onpointerdown = (e)=>{
-    //console.log(e);
-    // if(canvas.onmousemove == true){
-    //   console.log("client x: " + m.clientX);
-    //   console.log("client y: " + m.clientY);
-    // }
-    C.beginPath();
-    C.moveTo(e.clientX,e.clientY)
-    canvas.onmouseup = (m) =>{
-      C.lineTo(m.clientX,m.clientY)
-      C.stroke();
-     }
-    
+function main(){
+ //requestAnimationFrame(main);
+  canvas.onmousedown = mouseDown;
+  canvas.onmousemove = mouseMove;
+  canvas.onmouseup = mouseUp;
+}
+
+function mouseDown(event){
+  paint = true;
+  C.beginPath();
+  //C.arc(event.clientX, event.clientY, 5+width, 0, Math.PI*2,0,false);
+  C.fillStyle = `rgb(${rando(0,25)},25,25)`;
+  C.fill();
+}
+
+function mouseUp(event){
+  paint = false;
+  C.closePath();
+}
+
+function mouseMove(event){
+  if(paint){
+    if(width == 1){
+      grow = true;
+    }else if(width == 15){
+      grow = false;
+    }
+    if(grow){
+      width+= .5;
+    }else{
+      width-= .5;
+    }
+    C.lineTo(event.clientX, event.clientY)
+    //C.arc(event.clientX, event.clientY, 5+width, 0, Math.PI*2,0,false);
+    C.fillStyle = `rgb(${rando(0,25)},25,25)`;
+    C.fill();
+  }
+}
+function rando(min,max){
+      return Math.random()*(max-min) + min;
   }
 
+
+
+main();
 </script>
 
 
