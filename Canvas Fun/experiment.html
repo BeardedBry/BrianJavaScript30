@@ -29,36 +29,50 @@
       return Math.random()*(max-min) + min;
   }
 
-  function circles(x,y){
-      for(let i=0; i<10; i++){
-            C.beginPath();
-            C.arc(x, y, 30+(i*i), 0, Math.PI * 2, false);
-            C.strokeStyle = `rgba(${rando(0,255)},${rando(0,255)},${rando(0,255)},${rando(0.1,1)})`;
-            C.stroke();
-      }
+  function randomDirection(int){
+    if(Math.random() <= .5){
+      return -int;
+    }else{
+      return int;
+    }
   }
-let x = 200;
-let y = 200;
+
+  function createCircle(x,y){
+    C.beginPath();
+      C.arc(x,y, radius, 0, Math.PI * 2, false);
+      C.strokeStyle = 'black';
+      C.stroke();
+  }
+
+
+let x = rando(60,650);
+let y = rando(60,550);
 let z = 0;
-let dx = 5;
+let dx = randomDirection(5);
+let dy = randomDirection(5);
+console.log("dy: " +  dy)
+console.log("dx: " +  dx)
+
 const radius = 45;
+
 function animate() {
     if(z%2 == 0){
       C.clearRect(0,0,canvas.width,canvas.height);
     }
-      C.beginPath();
-      C.arc(x,canvas.height / 2, radius, 0, Math.PI * 2, false);
-      //C.strokeStyle = `rgba(${rando(0,255)},${rando(0,255)},${rando(0,255)},${rando(0.1,1)})`;
-      C.strokeStyle = 'black';
-      C.stroke();
-
-      if(x + radius >= canvas.width || x - radius == 0){
+    createCircle(x,y);
+      if(x + radius >= canvas.width || x - radius <= 0){
           dx = -dx;
       }
+      if(y + radius >= canvas.height || y - radius <= 0){
+          dy = -dy;
+      }
       x += dx;
+      y += dy;
+
     
     requestAnimationFrame(animate);
 }
+createCircle(5);
 animate();
 
 </script>
