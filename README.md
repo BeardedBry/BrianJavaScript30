@@ -51,3 +51,19 @@ I cheated a little on this one. I used the starter file provided. It was good to
 
 I used a dynamically created Regular Expression for finding matches. At first attempt this ran very clunky. After refactoring the code it ran smoothly.
 EDIT: Now has highlighting matching text. This was difficult to figure out at first. Eventually I discovered the innerHTML.replace() method.
+
+
+## Project 7 - Array Cardio Day 2
+![Array Cardio 2](screenshots/day7.png)
+
+This has been the simplest challenege so far. Still, it was good to be reminded how useful these array methods are.
+
+
+## Project 8 - Fun with HTML5 Canvas
+![HTML5 Canvas](screenshots/day8.png)
+
+There was some learning needed to do this. I ended up down a rabbit hole, watching math videos about how to convert degrees to radians. 
+Then I tried the challenge. Learning about HSL colors from Wes's video was worth it by itself.
+
+
+
