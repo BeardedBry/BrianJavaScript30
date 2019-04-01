@@ -12,50 +12,62 @@
   const canvas = document.querySelector('#draw');
   const C = canvas.getContext('2d');
   let paint = false;
-  let shrink = true;
-  let width = 1;
-  const gradient = C.createLinearGradient(0,0, canvas.width,canvas.height);
-  gradient.addColorStop(0, 'yellow');
-  gradient.addColorStop(.5, 'cyan');
-  gradient.addColorStop(1, 'green');
+  let [lastX, lastY] = [0,0];
+  let hue = 0;
+  let direction = true;
+  let size = 1;
+  C.lineJoin = 'round';
+  C.lineCap = 'round';
+  //C.globalCompositeOperation = 'lighter';
+  
 
 function main(){
  //requestAnimationFrame(main);
   canvas.onmousedown = mouseDown;
   canvas.onmousemove = mouseMove;
   canvas.onmouseup = mouseUp;
+  canvas.onmouseout = mouseUp;
 }
 
 function mouseDown(event){
   paint = true;
-  C.beginPath();
+  lastX = event.offsetX;
+  lastY = event.offsetY;
   width = 20;
+  direction = true;
 }
 
 function mouseUp(event){
   paint = false;
-  C.closePath();
 }
 
 function mouseMove(event){
   if(paint){
-    if(width >= 8){
-      shrink = true;
-    }else{
-      shrink = false;
-    }
 
-    if(shrink){
-      width-= .1;
-    }
+    C.beginPath();
+    C.strokeStyle = `hsl(${hue},100%,50%)`;
+    C.moveTo(lastX, lastY)
+    C.lineTo(event.offsetX, event.offsetY);
+    C.lineWidth = size;
     
-    C.lineJoin = 'round';
-    //C.moveTo(event.clientX, event.clientY)
-    C.lineTo(event.clientX, event.clientY);
-    C.lineWidth = 1 + width;
-    C.strokeStyle = gradient;
     C.stroke();
     
+    lastX = event.offsetX;
+    lastY = event.offsetY;
+    if(hue < 360){
+      hue++
+    }else{
+      hue = 0;
+    }
+    
+    if(size == 50){
+      direction = false;
+    }else if (size == 1){
+      direction = true;
+    }
+
+    direction? size++:size--;
+
   }
 }
 
@@ -71,6 +83,11 @@ main();
   canvas {
     border: 1px solid black;
   }
+
+  .color{
+    background-color: hsl(45,100%,50%);
+  }
+
 </style>
 
 </body>
