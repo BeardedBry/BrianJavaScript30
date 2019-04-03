@@ -65,5 +65,9 @@ This has been the simplest challenege so far. Still, it was good to be reminded 
 There was some learning needed to do this. I ended up down a rabbit hole, watching math videos about how to convert degrees to radians. 
 Then I tried the challenge. Learning about HSL colors from Wes's video was worth it by itself.
 
+## Project 9 - Must know Dev Tools Tricks
+console tricks for debugging.
+
+
 
 
