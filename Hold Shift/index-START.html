@@ -98,11 +98,13 @@
 <script>
 const inbox = document.querySelector('.inbox');
 const items = Array.from(inbox.querySelectorAll('.item'));
+const boxes = Array.from(inbox.querySelectorAll('.item > input'));
+console.log(boxes);
+const boxesLength = boxes.length;
 
 let shiftPressed = false;
 let firstClick;
 let secondClick;
-let lastClick;
 
 
 document.onkeydown = (event) => {
@@ -122,42 +124,32 @@ document.onkeyup = (event) => {
 inbox.onclick = (e) => {
 console.clear();
       if(e.target.type == 'checkbox'){
-        let clicked;
-        
-        //console.log(items);
 
-        // checked.forEach((check) =>{
-        //   // console.dir(check);
-        //   // console.log(check.firstElementChild.checked);
-        // })
-      
-        firstClick = items.findIndex((checkedIn) => {
-           return checkedIn.firstElementChild.checked || null;
-        })
-
-        
-        clicked = items.filter((check) => {
-          return (check.firstElementChild.checked);
-        })
-
-        secondClick = items.findIndex((checkedIn, index) => {
-          if(index !== firstClick){
-           return checkedIn.firstElementChild.checked;
+        // Find the first Click //
+        for(let x = 0; x < boxesLength-1; x++){
+          if(boxes[x].checked == true){
+            firstClick = x;
+            console.log('first box is: ' + x)
+            break;
           }
-          return null; 
-        })
+        }
+    
+
+        // Find the Second Click //
+        for(let x = boxesLength-1; x > 0; x--){
+          if(boxes[x].checked == true){
+            secondClick = x;
+            console.log('last box is: ' + x)
+            break;
+          }
+        }
+  
 
         if(firstClick > -1 && secondClick > -1 && shiftPressed == true){
           console.log('check em in!')
           checkEmIn(firstClick,secondClick);
         }
 
-        //console.log(clicked);
-        //console.log('clicked:');
-        console.dir(firstClick);
-        console.log(secondClick);
-
-        lastClick = secondClick;
       }
     }
 
