@@ -100,9 +100,9 @@ const inbox = document.querySelector('.inbox');
 const boxes = Array.from(inbox.querySelectorAll('.item > input'));
 const boxesLength = boxes.length;
 
-let shiftPressed = false;
-let firstClick;
-let secondClick;
+let shiftPressed = false; // flag
+let firstClick = -1;
+let secondClick = -1;
 
 
 document.onkeydown = (event) => {
@@ -120,42 +120,56 @@ document.onkeyup = (event) => {
 }
 
 inbox.onclick = (e) => {
-console.clear();
-      if(e.target.type == 'checkbox'){
+  console.clear();
+  console.log(e.target.checked);
+      if(e.target.type == 'checkbox' && e.target.checked == true){
 
-        // Find the first Click //
-        for(let x = 0; x < boxesLength-1; x++){
-          if(boxes[x].checked == true){
-            firstClick = x;
-            console.log('first box is: ' + x)
-            break;
-          }
-        }
-    
+        // // Find the first Click //
+        // for(let x = 0; x < boxesLength-1; x++){
+        //   if(boxes[x].checked == true){
+        //     firstClick = x;
+        //     console.log('first box is: ' + x)
+        //     break;
+        //   }
+        // }
+        // // Find the Second Click //
+        // for(let x = boxesLength-1; x > 0; x--){
+        //   if(boxes[x].checked == true){
+        //     secondClick = x;
+        //     console.log('last box is: ' + x)
+        //     break;
+        //   }
+        // }
 
-        // Find the Second Click //
-        for(let x = boxesLength-1; x > 0; x--){
-          if(boxes[x].checked == true){
-            secondClick = x;
-            console.log('last box is: ' + x)
-            break;
-          }
+        if(firstClick == -1){
+          firstClick = boxes.indexOf(e.target);
+        }else{
+          secondClick = boxes.indexOf(e.target);
         }
+
+        console.log(firstClick);
+        console.log(secondClick);
   
-
         if(firstClick > -1 && secondClick > -1 && shiftPressed == true){
           console.log('check em in!')
           checkEmIn(firstClick,secondClick);
         }
-
+        
+        secondClick = -1;
       }
-    }
+}
 
 function checkEmIn(first, second){
-    let boxesToCheck = boxes.slice(first+1,second);
+  let boxesToCheck;
+  if(first < second){
+    boxesToCheck = boxes.slice(first+1,second);
+  }else{
+    boxesToCheck = boxes.slice(second,first+1);
+  }
     boxesToCheck.forEach((box)=>{
      box.checked = true;
     })
+    firstClick = -1
 }
 
 
