@@ -97,9 +97,7 @@
 
 <script>
 const inbox = document.querySelector('.inbox');
-const items = Array.from(inbox.querySelectorAll('.item'));
 const boxes = Array.from(inbox.querySelectorAll('.item > input'));
-console.log(boxes);
 const boxesLength = boxes.length;
 
 let shiftPressed = false;
@@ -154,11 +152,10 @@ console.clear();
     }
 
 function checkEmIn(first, second){
-  let itemsToCheck = items.slice(first+1,second);
-  //console.dir(itemsToCheck);
-  itemsToCheck.forEach((item)=>{
-    item.children[0].checked = true;
-  })
+    let boxesToCheck = boxes.slice(first+1,second);
+    boxesToCheck.forEach((box)=>{
+     box.checked = true;
+    })
 }
 
 
