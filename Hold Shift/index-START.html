@@ -97,10 +97,12 @@
 
 <script>
 const inbox = document.querySelector('.inbox');
-const items = document.querySelectorAll('.item');
+const items = Array.from(inbox.querySelectorAll('.item'));
+
 let shiftPressed = false;
 let firstClick;
 let secondClick;
+let lastClick;
 
 
 document.onkeydown = (event) => {
@@ -121,7 +123,7 @@ inbox.onclick = (e) => {
 console.clear();
       if(e.target.type == 'checkbox'){
         let clicked;
-        const items = Array.from(inbox.querySelectorAll('.item'));
+        
         //console.log(items);
 
         // checked.forEach((check) =>{
@@ -147,15 +149,25 @@ console.clear();
 
         if(firstClick > -1 && secondClick > -1 && shiftPressed == true){
           console.log('check em in!')
+          checkEmIn(firstClick,secondClick);
         }
 
         //console.log(clicked);
         //console.log('clicked:');
         console.dir(firstClick);
         console.log(secondClick);
+
+        lastClick = secondClick;
       }
     }
 
+function checkEmIn(first, second){
+  let itemsToCheck = items.slice(first+1,second);
+  //console.dir(itemsToCheck);
+  itemsToCheck.forEach((item)=>{
+    item.children[0].checked = true;
+  })
+}
 
 
 </script>
