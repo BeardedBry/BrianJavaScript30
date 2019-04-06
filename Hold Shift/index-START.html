@@ -103,6 +103,8 @@ const boxesLength = boxes.length;
 let shiftPressed = false; // flag
 let firstClick = -1;
 let secondClick = -1;
+let lastBottomClick;
+let lastTopClick;
 
 
 document.onkeydown = (event) => {
@@ -120,44 +122,24 @@ document.onkeyup = (event) => {
 }
 
 inbox.onclick = (e) => {
-  console.clear();
-  console.log(e.target.checked);
+  // console.clear();
+  // console.log(e.target.checked);
       if(e.target.type == 'checkbox' && e.target.checked == true){
 
-        // // Find the first Click //
-        // for(let x = 0; x < boxesLength-1; x++){
-        //   if(boxes[x].checked == true){
-        //     firstClick = x;
-        //     console.log('first box is: ' + x)
-        //     break;
-        //   }
-        // }
-        // // Find the Second Click //
-        // for(let x = boxesLength-1; x > 0; x--){
-        //   if(boxes[x].checked == true){
-        //     secondClick = x;
-        //     console.log('last box is: ' + x)
-        //     break;
-        //   }
-        // }
-
-        if(firstClick == -1){
-          firstClick = boxes.indexOf(e.target);
-        }else{
+        if(firstClick > -1 && shiftPressed == true){
           secondClick = boxes.indexOf(e.target);
-        }
-
-        console.log(firstClick);
-        console.log(secondClick);
-  
-        if(firstClick > -1 && secondClick > -1 && shiftPressed == true){
-          console.log('check em in!')
+          // console.log('check em in!')
           checkEmIn(firstClick,secondClick);
         }
+    
+        firstClick = boxes.indexOf(e.target);
         
-        secondClick = -1;
+        // console.log('first click: ' + firstClick);
+        // console.log('second click: ' + secondClick);
+  
       }
 }
+
 
 function checkEmIn(first, second){
   let boxesToCheck;
@@ -168,8 +150,12 @@ function checkEmIn(first, second){
   }
     boxesToCheck.forEach((box)=>{
      box.checked = true;
-    })
-    firstClick = -1
+  })
+
+  lastTopClick = boxes.indexOf(boxesToCheck[0])-1;
+  lastBottomClick = boxes.indexOf(boxesToCheck[boxesToCheck.length-1])+1;
+  // console.log(lastTopClick);
+  // console.log(lastBottomClick);
 }
 
 
