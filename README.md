@@ -68,6 +68,8 @@ Then I tried the challenge. Learning about HSL colors from Wes's video was worth
 ## Project 9 - Must know Dev Tools Tricks
 console tricks for debugging.
 
+## Project 9 - Hold Shift to Check Multiple Boxes
+![Hold Shift](screenshots/day10.png)
 
-
+This was challenging. And a good example of pausing to think of a simpler way to do it. I believe I got it working with minimal bugs, but Wes's version is much simpler and harder to break from future code changes.
 
