@@ -1,9 +1,9 @@
-const Play = document.querySelector('.player__button');
-const Video = document.querySelector('.player__video');
+const PLAY = document.querySelector('.player__button');
+const VIDEO = document.querySelector('.player__video');
 
-Play.addEventListener('click',playVideo);
-Video.addEventListener('click',playVideo);
+PLAY.addEventListener('click',playVideo);
+VIDEO.addEventListener('click',playVideo);
 
 function playVideo(){
-    Video.paused == true? Video.play():Video.pause();
+    VIDEO.paused == true? VIDEO.play():VIDEO.pause();
 }
