@@ -4,27 +4,40 @@ const VOLUME_SLIDER = document.querySelector('input[name=volume]');
 const PLAYBACK_SLIDER = document.querySelector('input[name=playbackRate]');
 const DATA_SKIP = document.querySelectorAll('button[data-skip]');
 const FILLED = document.querySelector('.progress__filled');
+let progressPercent;
 
 
 
 PLAY.addEventListener('click',playVideo);
 VIDEO.addEventListener('click',playVideo);
+
+VIDEO.addEventListener('timeupdate', progress)
+
 VOLUME_SLIDER.addEventListener('change', changeSound);
 PLAYBACK_SLIDER.addEventListener('change', changeSpeed);
-
 
 DATA_SKIP[0].addEventListener('click', skip);
 DATA_SKIP[1].addEventListener('click', skip);
 
 
-console.dir(FILLED);
+
+console.dir(VIDEO);
+
+function progress(){
+    if(Math.round(VIDEO.currentTime) % 2 == 0){
+        progressPercent = ((VIDEO.currentTime / VIDEO.duration) * 100);
+        FILLED.style['-webkit-flex-basis'] = progressPercent +  "%";    
+    }
+}
 
 function skip(e){
     console.log(VIDEO.currentTime);
-    let skipTime = e.target.dataset.skip;
+    let skipTime = Math.round(e.target.dataset.skip);
 
-    VIDEO.currentTime += Math.round(skipTime);
-
+    VIDEO.currentTime += skipTime;
+    progressPercent = ((VIDEO.currentTime / VIDEO.duration) * 100);
+    FILLED.style['-webkit-flex-basis'] = progressPercent +  "%";
+    //console.log((VIDEO.currentTime / VIDEO.duration * 100));
 }
 
 function playVideo(){
