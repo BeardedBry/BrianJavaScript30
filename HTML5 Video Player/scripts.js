@@ -28,26 +28,26 @@ function scrub(e){
     // console.dir(FILLED);
     let time = Math.round((e.offsetX / VIDEO.clientWidth) * 100);
     //FILLED.style['-webkit-flex-basis'];
+    console.dir(e);
     console.log('client width: ' + VIDEO.clientWidth);
     console.log('offsetX: ' + e.offsetX);
     console.log('percent: ' + time);
 
-    //VIDEO.currentTime = time;
+    VIDEO.currentTime = e.offsetX - 8;
 }
 
 function progress(){
-    if(Math.round(VIDEO.currentTime) % 2 == 0){
-        progressPercent = ((VIDEO.currentTime / VIDEO.duration) * 100);
-        FILLED.style['-webkit-flex-basis'] = progressPercent +  "%";    
-    }
+    progressPercent = ((VIDEO.currentTime / VIDEO.duration) * 100);
+    FILLED.style['-webkit-flex-basis'] = progressPercent +  "%";    
 }
+
 function skip(e){
     console.log(VIDEO.currentTime);
     let skipTime = Math.round(e.target.dataset.skip);
 
     VIDEO.currentTime += skipTime;
-    progressPercent = ((VIDEO.currentTime / VIDEO.duration) * 100);
-    FILLED.style['-webkit-flex-basis'] = progressPercent +  "%";
+    // progressPercent = ((VIDEO.currentTime / VIDEO.duration) * 100);
+    // FILLED.style['-webkit-flex-basis'] = progressPercent +  "%";
     //console.log((VIDEO.currentTime / VIDEO.duration * 100));
 }
 
