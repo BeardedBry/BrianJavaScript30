@@ -19,6 +19,8 @@ DATA_SKIP[0].addEventListener('click', skip);
 DATA_SKIP[1].addEventListener('click', skip);
 
 PROGRESS_BAR.addEventListener('mousedown', scrub);
+PROGRESS_BAR.addEventListener('mouseup', scrub);
+
 
 console.dir(VIDEO);
 //clientWidth 
@@ -26,14 +28,16 @@ function scrub(e){
     // console.dir(e.offsetX);
     // console.log(progressPercent);
     // console.dir(FILLED);
-    let time = Math.round((e.offsetX / VIDEO.clientWidth) * 100);
+    let time = (e.offsetX / VIDEO.clientWidth);
     //FILLED.style['-webkit-flex-basis'];
     console.dir(e);
     console.log('client width: ' + VIDEO.clientWidth);
+    console.log('css width: ' + VIDEO.width);
+
     console.log('offsetX: ' + e.offsetX);
     console.log('percent: ' + time);
 
-    VIDEO.currentTime = e.offsetX - 8;
+    VIDEO.currentTime = VIDEO.duration * time;
 }
 
 function progress(){
