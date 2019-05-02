@@ -73,3 +73,6 @@ console tricks for debugging.
 
 This was challenging. And a good example of pausing to think of a simpler way to do it. I believe I got it working with minimal bugs, but Wes's version is much simpler and harder to break from future code changes.
 
+## Project 10 - HTML5 Video Player, Project 11 - KONAMI Sequence 
+Simple enough challenges, compared to some of the earlier ones. 
+
