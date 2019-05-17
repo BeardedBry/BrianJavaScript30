@@ -43,6 +43,8 @@
   </div>
 
   <script>
+
+    let windowHeight = 0;
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
@@ -57,6 +59,29 @@
         if (callNow) func.apply(context, args);
       };
     }
+
+    const images = [...document.querySelectorAll('IMG')];
+
+ 
+
+    document.addEventListener('wheel', (e)=>{
+      console.log(e.view.pageYOffset + window.innerHeight);
+      windowHeight = e.view.pageYOffset + window.innerHeight;
+
+      images.forEach((img)=>{
+        if(img.offsetTop <= windowHeight){
+          img.classList.add('active');
+        }
+      })
+    });
+
+    // images.forEach((img) => {
+    //   img.addEventListener('mousewheel',(e)=>{
+    //     console.log(e);
+    //   })
+    // })
+
+
 
   </script>
 
