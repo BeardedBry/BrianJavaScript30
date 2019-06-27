@@ -76,3 +76,7 @@ This was challenging. And a good example of pausing to think of a simpler way to
 ## Project 10 - HTML5 Video Player, Project 11 - KONAMI Sequence 
 Simple enough challenges, compared to some of the earlier ones. 
 
+## Project 11 - Slide in on Scroll
+
+
+
