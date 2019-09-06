@@ -77,6 +77,8 @@ This was challenging. And a good example of pausing to think of a simpler way to
 Simple enough challenges, compared to some of the earlier ones. 
 
 ## Project 11 - Slide in on Scroll
-
+![slide In](screenshots/day11.png)
+After a hiatus, another challenge finally completed.
+Learning about the reasons to use a debounce function for performance reasons will come in handy.
 
 
