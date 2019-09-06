@@ -45,6 +45,7 @@
   <script>
 
     let windowHeight = 0;
+
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
@@ -62,18 +63,25 @@
 
     const images = [...document.querySelectorAll('IMG')];
 
- 
-
-    document.addEventListener('wheel', (e)=>{
-      console.log(e.view.pageYOffset + window.innerHeight);
+    function slide(e){
+      //console.log(e.view.pageYOffset + window.innerHeight);
       windowHeight = e.view.pageYOffset + window.innerHeight;
+      //console.log('window scroll y: ' + window.scrollY);
+      //console.log('windowHeight: ' + windowHeight);
 
       images.forEach((img)=>{
-        if(img.offsetTop <= windowHeight){
+        if(img.offsetTop <= windowHeight + 20 && (img.offsetTop+img.clientHeight - 100) >= window.scrollY){
           img.classList.add('active');
-        }
-      })
-    });
+          
+          //console.log(`img offset top + height: ${img.offsetTop + img.clientHeight}`);
+          }else if( img.classList.contains('active')) {
+            img.classList.remove('active');
+            //console.info(img);
+          }
+        });
+    }
+
+    document.addEventListener('wheel', debounce(slide));
 
     // images.forEach((img) => {
     //   img.addEventListener('mousewheel',(e)=>{
