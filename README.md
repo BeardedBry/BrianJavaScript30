@@ -82,4 +82,7 @@ Simple enough challenges, compared to some of the earlier ones.
 After a hiatus, another challenge finally completed.
 Learning about the reasons to use a debounce function for performance reasons will come in handy.
 
+## Project 12 - Local Storage
+![Local Storage](screenshots/day12.png)
 
+This one was pretty easy. The harder part was building the UI and managing the state, I've gotten used to using react for this.
